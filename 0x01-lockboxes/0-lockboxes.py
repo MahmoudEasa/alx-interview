@@ -4,8 +4,7 @@
 
 
 def append_to_array(src, boxes_len, boxes, arr_to_append):
-    """
-    """
+    """ Append keys to array """
     for key in src:
         if key < boxes_len:
             if key not in arr_to_append:
