@@ -28,13 +28,12 @@ def canUnlockAll(boxes):
     if boxes_len <= 1:
         return (True)
 
-    if not all(isinstance(box, list) for box in boxes):
-        return (False)
-
     unloced_keys = [0]
 
     for i in range(boxes_len):
         if i in unloced_keys:
+            if not isinstance(boxes[i], list):
+                return (False)
             append_to_array(boxes[i], boxes_len, boxes, unloced_keys)
 
     if not all(i in unloced_keys for i in range(boxes_len)):
