@@ -20,14 +20,16 @@ def canUnlockAll(boxes):
         Args:
             boxes: a list of lists
     """
-    if not boxes or not isinstance(boxes, list) or\
-            not all(isinstance(box, list) for box in boxes):
+    if not isinstance(boxes, list):
         return (False)
 
     boxes_len = len(boxes)
 
-    if boxes_len == 1:
+    if boxes_len <= 1:
         return (True)
+
+    if not all(isinstance(box, list) for box in boxes):
+        return (False)
 
     unloced_keys = [0]
 
