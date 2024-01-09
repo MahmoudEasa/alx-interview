@@ -9,8 +9,12 @@ def canUnlockAll(boxes):
         Args:
             boxes: a list of lists
     """
+    if not boxes or not isinstance(boxes, list) or\
+            not [isinstance(box, list) for box in boxes]:
+        return (False)
 
     boxes_len = len(boxes)
+    unlocked = False
 
     for i in range(1, boxes_len):
         unlocked = False
