@@ -3,6 +3,18 @@
 """
 
 
+def append_to_array(src, boxes_len, boxes, arr_to_append):
+    """
+    """
+    for key in src:
+        if key < boxes_len:
+            if key not in arr_to_append:
+                arr_to_append.append(key)
+            for k in boxes[key]:
+                if k not in arr_to_append:
+                    arr_to_append.append(k)
+
+
 def canUnlockAll(boxes):
     """ Can Unlock All
 
@@ -14,19 +26,17 @@ def canUnlockAll(boxes):
         return (False)
 
     boxes_len = len(boxes)
-    unlocked = False
-
-    if not boxes_len:
-        return (False)
 
     if boxes_len == 1:
         return (True)
 
-    for i in range(1, boxes_len):
-        unlocked = False
-        for j in range(boxes_len):
-            if j != i and i in boxes[j]:
-                unlocked = True
-                break
+    unloced_keys = [0]
 
-    return (unlocked)
+    for i in range(boxes_len):
+        if i in unloced_keys:
+            append_to_array(boxes[i], boxes_len, boxes, unloced_keys)
+
+    if not all(i in unloced_keys for i in range(boxes_len)):
+        return (False)
+
+    return (True)
