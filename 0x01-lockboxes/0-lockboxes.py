@@ -35,7 +35,7 @@ def canUnlockAll(boxes):
         if i in unloced_keys:
             append_to_array(boxes[i], boxes_len, boxes, unloced_keys)
 
-    if len(unloced_keys) < boxes_len:
+    if len(unloced_keys) < (boxes_len + 1):
         return (False)
 
     return (True)
