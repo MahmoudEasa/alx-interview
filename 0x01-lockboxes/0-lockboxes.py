@@ -10,7 +10,7 @@ def canUnlockAll(boxes):
             boxes: a list of lists
     """
     if not boxes or not isinstance(boxes, list) or\
-            not [isinstance(box, list) for box in boxes]:
+            not all(isinstance(box, list) for box in boxes):
         return (False)
 
     boxes_len = len(boxes)
