@@ -4,9 +4,9 @@
 
 
 def append_to_set(src, boxes_len, boxes, set_to_append):
-    """ Append keys to array """
+    """ Append keys to set """
     for key in src:
-        if key < boxes_len and key > 0:
+        if key < boxes_len:
             set_to_append.add(key)
             for k in boxes[key]:
                 set_to_append.add(k)
@@ -27,12 +27,9 @@ def canUnlockAll(boxes):
         return (True)
 
     unloced_keys = set()
-
     unloced_keys.add(0)
 
-    for i in range(boxes_len):
-        if i in unloced_keys:
-            append_to_set(boxes[i], boxes_len, boxes, unloced_keys)
+    append_to_set(boxes[0], boxes_len, boxes, unloced_keys)
 
     if not all(i in unloced_keys for i in range(boxes_len)):
         return (False)
