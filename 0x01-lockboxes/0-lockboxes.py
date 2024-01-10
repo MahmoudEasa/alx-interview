@@ -3,15 +3,13 @@
 """
 
 
-def append_to_array(src, boxes_len, boxes, arr_to_append):
+def append_to_set(src, boxes_len, boxes, set_to_append):
     """ Append keys to array """
     for key in src:
         if key < boxes_len and key > 0:
-            if key not in arr_to_append:
-                arr_to_append.append(key)
+            set_to_append.add(key)
             for k in boxes[key]:
-                if k not in arr_to_append:
-                    arr_to_append.append(k)
+                set_to_append.add(k)
 
 
 def canUnlockAll(boxes):
@@ -20,14 +18,21 @@ def canUnlockAll(boxes):
         Args:
             boxes: a list of lists
     """
+    if not isinstance(boxes, list):
+        return (False)
+
     boxes_len = len(boxes)
 
     if boxes_len <= 1:
         return (True)
 
-    unloced_keys = [0]
+    unloced_keys = set()
 
-    append_to_array(boxes[0], boxes_len, boxes, unloced_keys)
+    unloced_keys.add(0)
+
+    for i in range(boxes_len):
+        if i in unloced_keys:
+            append_to_set(boxes[i], boxes_len, boxes, unloced_keys)
 
     if not all(i in unloced_keys for i in range(boxes_len)):
         return (False)
