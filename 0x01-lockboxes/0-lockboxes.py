@@ -20,9 +20,6 @@ def canUnlockAll(boxes):
         Args:
             boxes: a list of lists
     """
-    if not isinstance(boxes, list):
-        return (False)
-
     boxes_len = len(boxes)
 
     if boxes_len <= 1:
