@@ -27,9 +27,7 @@ def canUnlockAll(boxes):
 
     unloced_keys = [0]
 
-    for i in range(boxes_len):
-        if i in unloced_keys:
-            append_to_array(boxes[i], boxes_len, boxes, unloced_keys)
+    append_to_array(boxes[0], boxes_len, boxes, unloced_keys)
 
     if not all(i in unloced_keys for i in range(boxes_len)):
         return (False)
