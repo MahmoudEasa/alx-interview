@@ -9,8 +9,7 @@ def append_to_set(index, boxes_len, boxes, set_to_append):
         if key < boxes_len and key not in set_to_append:
             set_to_append.add(key)
             for k in boxes[key]:
-                if k not in set_to_append:
-                    set_to_append.add(k)
+                set_to_append.add(k)
 
 
 def canUnlockAll(boxes):
