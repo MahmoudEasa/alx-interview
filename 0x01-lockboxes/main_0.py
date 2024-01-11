@@ -3,7 +3,19 @@
 canUnlockAll = __import__('0-lockboxes').canUnlockAll
 canUnlockAll2 = __import__('main_1').canUnlockAll
 
+if __name__ == "__main__":
+    boxes = []
 
+    keys = []
+    for n in range(1, 1000):
+        keys = []
+        for m in range(1, 1000):
+            keys.append(m)
+        boxes.append(keys)
+
+    print(canUnlockAll(boxes))
+
+"""
 print("1")
 boxes = [[4]]
 print(canUnlockAll(boxes))
@@ -53,3 +65,4 @@ print("8")
 boxes = [[], [], []]
 print(canUnlockAll(boxes))
 print(canUnlockAll2(boxes))
+"""
