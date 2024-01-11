@@ -26,14 +26,13 @@ def canUnlockAll(boxes):
     if boxes_len <= 1:
         return (True)
 
-    unloced_keys = set()
-    unloced_keys.add(0)
+    unlocked_keys = {0}
 
     for i in range(boxes_len):
-        if i in unloced_keys:
-            append_to_set(boxes[i], boxes_len, boxes, unloced_keys)
+        if i in unlocked_keys:
+            append_to_set(boxes[i], boxes_len, boxes, unlocked_keys)
 
-    if not all(i in unloced_keys for i in range(boxes_len)):
+    if len(unlocked_keys) != boxes_len:
         return (False)
 
     return (True)
