@@ -26,7 +26,8 @@ def canUnlockAll(boxes):
     if boxes_len <= 1:
         return (True)
 
-    unlocked_keys = {0}
+    unlocked_keys = set()
+    unlocked_keys.add(0)
 
     for i in range(boxes_len):
         if i in unlocked_keys:
