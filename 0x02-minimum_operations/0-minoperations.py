@@ -12,23 +12,17 @@ def minOperations(n: int) -> int:
     if type(n) != int or n < 2:
         return (0)
 
-    min = 2
-    opr = 2
+    min_ops = 0
+    opr = 1
+    copy_all = 0
 
-    if n % 2 != 0:
-        opr += 1
-        min += 1
-
-    copy_all = opr
-
-    while (opr < n):
-        if (opr + opr <= n):
-            opr += opr
+    while opr < n:
+        if n % opr == 0:
             copy_all = opr
-            min += 2
-
+            opr += copy_all
+            min_ops += 2
         else:
             opr += copy_all
-            min += 1
+            min_ops += 1
 
-    return (min)
+    return (min_ops)
