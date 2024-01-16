@@ -9,7 +9,7 @@
 
 def minOperations(n: int) -> int:
     """ Min Operations Function """
-    if n < 2:
+    if type(n) != int or n < 2:
         return (0)
 
     min = 2
