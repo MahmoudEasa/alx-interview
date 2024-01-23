@@ -32,11 +32,12 @@ def read_stdin():
 
     try:
         for line in sys.stdin:
-            counter += 1
             match = pattern.search(line)
 
             if not match:
                 continue
+
+            counter += 1
 
             status_code = match.group(1)
             size = match.group(2)
