@@ -51,6 +51,7 @@ def read_stdin():
                 print_status(total_size, status_codes)
                 counter = 0
                 status_codes = {}
+        print_status(total_size, status_codes)
     except KeyboardInterrupt:
         print_status(total_size, status_codes)
 
