@@ -55,6 +55,7 @@ def read_stdin():
         print_status(total_size, status_codes)
     except KeyboardInterrupt:
         print_status(total_size, status_codes)
+        raise
 
 
 if __name__ == "__main__":
