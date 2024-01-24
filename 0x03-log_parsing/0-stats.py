@@ -46,13 +46,14 @@ def main():
     counter = 0
 
     try:
-        for line in sys.stdin:
+        while True:
+            line = input()
+            counter += 1
             data = match_input(line)
 
             if not data:
                 continue
 
-            counter += 1
             total_size += data['file_size']
             status_code = data['status_code']
 
@@ -61,13 +62,10 @@ def main():
             else:
                 status_codes[status_code] += 1
 
-            if counter == 10:
+            if counter % 10 == 0:
                 print_status(total_size, status_codes)
-                counter = 0
                 status_codes = {}
-        if counter:
-            print_status(total_size, status_codes)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print_status(total_size, status_codes)
 
 
