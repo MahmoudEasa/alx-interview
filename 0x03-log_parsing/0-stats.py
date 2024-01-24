@@ -47,12 +47,12 @@ def main():
 
     try:
         for line in sys.stdin:
-            counter += 1
             data = match_input(line)
 
             if not data:
                 continue
 
+            counter += 1
             total_size += data['file_size']
             status_code = data['status_code']
 
