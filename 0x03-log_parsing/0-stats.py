@@ -15,34 +15,47 @@ import re
 def print_status(total_size, status_codes):
     """ Print Status Function """
     print(f"File size: {total_size}")
-    for code, count in sorted(status_codes.items()):
+    sort_codes = sorted(status_codes.items())
+    for code, count in sort_codes:
         print(f"{code}: {count}")
 
 
-def read_stdin():
-    """ Read Stdin Function """
-    total_size = 0
-    status_codes = {}
-    counter = 0
+def match_input(input_line):
+    """ Check if input line match """
+    data = {'status_code': 0, 'file_size': 0}
+
     pattern = re.compile(r'\b^[0-9]+.[0-9]+.[0-9]+.[0-9]+ - '
                          r'\[[0-9]+-[0-9]+-[0-9]+ '
                          r'[0-9]+:[0-9]+:[0-9]+.[0-9]+\] '
                          r'"GET \/projects\/260 HTTP\/1.1" '
                          r'(200|301|400|401|403|404|405|500) ([0-9]+)$\b')
 
+    match = pattern.search(input_line)
+    if not match:
+        return (None)
+
+    data['status_code'] = match.group(1)
+    data['file_size'] = int(match.group(2))
+    return (data)
+
+
+def main():
+    """ Main Function """
+    total_size = 0
+    status_codes = {}
+    counter = 0
+
     try:
         for line in sys.stdin:
-            match = pattern.search(line)
+            counter += 1
+            data = match_input(line)
 
-            if not match:
+            if not data:
                 continue
 
-            counter += 1
+            total_size += data['file_size']
+            status_code = data['status_code']
 
-            status_code = match.group(1)
-            size = match.group(2)
-
-            total_size += int(size)
             if not status_codes.get(status_code, None):
                 status_codes[status_code] = 1
             else:
@@ -52,11 +65,11 @@ def read_stdin():
                 print_status(total_size, status_codes)
                 counter = 0
                 status_codes = {}
-        print_status(total_size, status_codes)
+        if counter:
+            print_status(total_size, status_codes)
     except KeyboardInterrupt:
         print_status(total_size, status_codes)
-        raise
 
 
 if __name__ == "__main__":
-    read_stdin()
+    main()
