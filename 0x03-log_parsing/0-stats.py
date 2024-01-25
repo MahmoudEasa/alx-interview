@@ -15,9 +15,9 @@ import re
 def print_status(total_size, status_codes):
     """ Print Status Function """
     print(f"File size: {total_size}")
-    sort_codes = sorted(status_codes.items())
-    for code, count in sort_codes:
-        print(f"{code}: {count}")
+    for code, count in status_codes.items():
+        if count > 0:
+            print(f"{code}: {count}")
 
 
 def match_input(input_line):
@@ -34,7 +34,7 @@ def match_input(input_line):
     if not match:
         return (None)
 
-    data['status_code'] = match.group(1)
+    data['status_code'] = int(match.group(1))
     data['file_size'] = int(match.group(2))
     return (data)
 
@@ -42,12 +42,20 @@ def match_input(input_line):
 def main():
     """ Main Function """
     total_size = 0
-    status_codes = {}
+    status_codes = {
+                200: 0,
+                301: 0,
+                400: 0,
+                401: 0,
+                403: 0,
+                404: 0,
+                405: 0,
+                500: 0
+            }
     counter = 0
 
     try:
-        while True:
-            line = input()
+        for line in sys.stdin:
             counter += 1
             data = match_input(line)
 
@@ -64,9 +72,10 @@ def main():
 
             if counter % 10 == 0:
                 print_status(total_size, status_codes)
-                status_codes = {}
-    except (KeyboardInterrupt, EOFError):
         print_status(total_size, status_codes)
+    except KeyboardInterrupt:
+        print_status(total_size, status_codes)
+        raise
 
 
 if __name__ == "__main__":
