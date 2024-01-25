@@ -74,7 +74,7 @@ def main():
                 print_status(total_size, status_codes)
                 counter = 0
 
-        if counter:
+        if counter > 0:
             print_status(total_size, status_codes)
     except KeyboardInterrupt:
         print_status(total_size, status_codes)
