@@ -65,9 +65,7 @@ def main():
             total_size += data['file_size']
             status_code = data['status_code']
 
-            if not status_codes.get(status_code, None):
-                status_codes[status_code] = 1
-            else:
+            if status_code in status_codes:
                 status_codes[status_code] += 1
 
             if counter % 10 == 0:
