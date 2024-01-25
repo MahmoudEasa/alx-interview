@@ -31,7 +31,6 @@ try:
         except (IndexError, TypeError, ValueError):
             continue
 
-
         if stat_code not in status_codes:
             continue
 
