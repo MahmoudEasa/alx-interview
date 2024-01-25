@@ -6,7 +6,6 @@ import sys
 status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 file_size = 0
 counter = 0
-i = 0
 
 
 def print_stats(f_size, status_dict):
