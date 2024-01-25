@@ -16,7 +16,7 @@ def print_status(total_size, status_codes):
     """ Print Status Function """
     print(f"File size: {total_size}")
     for code, count in status_codes.items():
-        if count > 0:
+        if count:
             print(f"{code}: {count}")
 
 
