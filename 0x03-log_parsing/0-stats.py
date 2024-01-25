@@ -34,15 +34,8 @@ def match_input(input_line):
     if not match:
         return (None)
 
-    try:
-        data['status_code'] = int(match.group(1))
-    except Exception:
-        return (None)
-
-    try:
-        data['file_size'] = int(match.group(2))
-    except Exception:
-        return (None)
+    data['status_code'] = int(match.group(1))
+    data['file_size'] = int(match.group(2))
     return (data)
 
 
