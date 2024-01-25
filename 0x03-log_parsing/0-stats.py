@@ -23,12 +23,12 @@ try:
 
         try:
             size = int(elements[-1])
-        except (IndexError, TypeError, ValueError):
+        except Exception:
             continue
 
         try:
             stat_code = int(elements[-2])
-        except (IndexError, TypeError, ValueError):
+        except Exception:
             continue
 
         if stat_code not in status_codes:
