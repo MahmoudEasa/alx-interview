@@ -28,10 +28,12 @@ try:
         except (IndexError, TypeError, ValueError):
             continue
 
-        if stat_code in status_codes:
-            status_codes[stat_code] += 1
+        if stat_code not in status_codes:
+            continue
 
-            file_size += size
+        status_codes[stat_code] += 1
+        file_size += size
+
         if counter == 10:
             print_stats(file_size, status_codes)
             counter = 0
