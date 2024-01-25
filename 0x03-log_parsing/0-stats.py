@@ -38,7 +38,8 @@ try:
         if counter == 10:
             print_stats(file_size, status_codes)
             counter = 0
-    print_stats(file_size, status_codes)
+    if counter > 0:
+        print_stats(file_size, status_codes)
 
 except KeyboardInterrupt:
     print_stats(file_size, status_codes)
