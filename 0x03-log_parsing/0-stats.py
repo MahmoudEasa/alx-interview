@@ -70,9 +70,12 @@ def main():
             else:
                 status_codes[status_code] += 1
 
-            if counter % 10 == 0:
+            if counter == 10:
                 print_status(total_size, status_codes)
-        print_status(total_size, status_codes)
+                counter = 0
+
+        if counter:
+            print_status(total_size, status_codes)
     except KeyboardInterrupt:
         print_status(total_size, status_codes)
         raise
