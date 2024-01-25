@@ -24,6 +24,7 @@ try:
             stat_code = int(elements[-2])
             if stat_code not in status_codes:
                 continue
+            status_codes[stat_code] += 1
         except Exception:
             continue
 
@@ -33,7 +34,6 @@ try:
         except Exception:
             continue
 
-        status_codes[stat_code] += 1
 
         if counter == 10:
             print_stats(file_size, status_codes)
