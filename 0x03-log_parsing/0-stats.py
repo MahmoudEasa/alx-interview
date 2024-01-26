@@ -62,13 +62,8 @@ def main():
             if not data:
                 continue
 
-            status_code = data['status_code']
-
-            if status_code not in status_codes:
-                continue
-
             total_size += data['file_size']
-            status_codes[status_code] += 1
+            status_codes[data['status_code']] += 1
 
             if counter % 10 == 0:
                 print_status(total_size, status_codes)
