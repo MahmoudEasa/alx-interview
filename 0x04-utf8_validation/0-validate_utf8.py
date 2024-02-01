@@ -9,7 +9,7 @@ def validUTF8(data: List[int]) -> bool:
     """ Method that determines if a given data
         set represents a valid UTF-8 encoding
     """
-    n_bytes = 0
+    n_bytes: int = 0
 
     for item in data:
         if n_bytes == 0:
