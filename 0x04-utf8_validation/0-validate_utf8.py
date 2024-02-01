@@ -11,7 +11,7 @@ def validUTF8(data: List[int]) -> bool:
     """
     n_bytes = 0
 
-    if !len(data):
+    if not len(data):
         return (False)
 
     for item in data:
