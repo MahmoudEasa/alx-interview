@@ -12,9 +12,9 @@ def validUTF8(data: List[int]) -> bool:
     n_bytes = 0
 
     for item in data:
-        if (item >> 7) == 0 and n_bytes == 0: continue
-
         if n_bytes == 0:
+            if (item >> 7) == 0: continue
+
             if (item >> 5) == 0b110: n_bytes = 1
             elif (item >> 4) == 0b1110: n_bytes = 2
             elif (item >> 3) == 0b11110: n_bytes = 3
