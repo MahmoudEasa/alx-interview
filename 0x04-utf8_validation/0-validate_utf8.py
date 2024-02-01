@@ -2,24 +2,22 @@
 """ Write a method that determines if a given data set
     represents a valid UTF-8 encoding.
 """
+from typing import List
 
 
-def validUTF8(data):
+def validUTF8(data: List[int]) -> bool:
     """ Method that determines if a given data
         set represents a valid UTF-8 encoding
     """
     n_bytes = 0
 
     for item in data:
+        if (item >> 7) == 0: continue
+
         if n_bytes == 0:
-            if (item >> 5) == 0b110:
-                n_bytes = 1
-            elif (item >> 4) == 0b1110:
-                n_bytes = 2
-            elif (item >> 3) == 0b11110:
-                n_bytes = 3
-            elif (item >> 7) != 0:
-                return (False)
+            if (item >> 5) == 0b110: n_bytes = 1
+            elif (item >> 4) == 0b1110: n_bytes = 2
+            elif (item >> 3) == 0b11110: n_bytes = 3
         else:
             if (item >> 6) != 0b10:
                 return (False)
