@@ -12,6 +12,7 @@ def check_col(board, index, board_len):
 
     return (True)
 
+
 def check_row(board, index, board_len):
     """ Check if there is a queen in the row """
     for r in range(board_len):
@@ -20,42 +21,50 @@ def check_row(board, index, board_len):
 
     return (True)
 
-def check_l_angle(board, row, col, board_len):
+
+def check_r_angle(board, row, col, board_len):
     """ Check if there is a queen in the left angle """
     c = col
     for r in range(row, -1, -1):
-        if c < board_len and board[r][c]:
+        if c >= board_len:
+            break
+        if board[r][c]:
             return (False)
         c += 1
 
     c = col
     for r in range(row, board_len):
-        if c >= 0 and board[r][c]:
+        if c < 0:
+            break
+        if board[r][c]:
             return (False)
         c -= 1
 
     return (True)
 
-def check_r_angle(board, row, col, board_len):
+
+def check_l_angle(board, row, col, board_len):
     """ Check if there is a queen in the right angle """
     c = col
     for r in range(row, -1, -1):
-        if c >= 0 and board[r][c]:
+        if c < 0:
+            break
+        if board[r][c]:
             return (False)
         c -= 1
 
     c = col
     for r in range(row, board_len):
-        if c < board_len and board[r][c]:
+        if c >= board_len:
+            break
+        if board[r][c]:
             return (False)
         c += 1
 
     return (True)
 
-def chek_all(board, r, c, n):
-    if not check_col(board, r, n):
-        return (False)
 
+def chek_all(board, r, c, n):
     if not check_row(board, r, n):
         return (False)
 
@@ -63,6 +72,7 @@ def chek_all(board, r, c, n):
         return (False)
 
     return (check_r_angle(board, r, c, n))
+
 
 def main():
     """ The Main Function """
@@ -83,36 +93,41 @@ def main():
         exit(1)
 
     n_range = range(n)
-    for i in n_range:
-        board = [[0, 0, 0, 0] for _ in n_range]
+    i = 0
+    while i < n:
+        board = [[0 for _ in n_range] for _ in n_range]
         result = []
-        c = i
-        r = 0
+        c = 0
+        r = i
 
         while (c < n):
             found = 0
+
             while (r < n):
+                if r >= n:
+                    break
+
                 if chek_all(board, r, c, n):
                     board[r][c] = 1
-                    result.append([r, c])
-                    c += 1
-                    r = 0
+                    result.append([c, r])
                     found = 1
-                    continue
+                    r = 0
+                    break
                 r += 1
 
             if not found and len(result):
                 last_i = result.pop()
-                c -= 1
-                r = last_i[0] + 1
-                board[last_i[0]][last_i[1]] = 0
+                c = last_i[0]
+                r = last_i[1] + 1
+                board[last_i[1]][last_i[0]] = 0
                 continue
+            c += 1
 
-        i = c
-        print(board)
-        """
         if len(result):
-            print(result)"""
+            print(result)
+            i = result[0][1] + 1
+        else:
+            return
 
 
 if __name__ == "__main__":
