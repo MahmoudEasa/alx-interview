@@ -4,15 +4,6 @@
 from sys import argv
 
 
-def check_col(board, index, board_len):
-    """ Check if there is a queen in the column """
-    for c in range(board_len):
-        if board[c][index]:
-            return (False)
-
-    return (True)
-
-
 def check_row(board, index, board_len):
     """ Check if there is a queen in the row """
     for r in range(board_len):
