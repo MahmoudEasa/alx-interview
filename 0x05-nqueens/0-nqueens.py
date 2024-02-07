@@ -94,9 +94,6 @@ def main():
             found = 0
 
             while (r < n):
-                if r >= n:
-                    break
-
                 if chek_all(board, r, c, n):
                     board[r][c] = 1
                     result.append([c, r])
