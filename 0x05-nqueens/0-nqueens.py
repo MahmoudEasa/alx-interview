@@ -85,12 +85,11 @@ def main():
 
     n_range = range(n)
     i = 0
+    c = 0
+    r = i
+    board = [[0 for _ in n_range] for _ in n_range]
+    result = []
     while i < n:
-        board = [[0 for _ in n_range] for _ in n_range]
-        result = []
-        c = 0
-        r = i
-
         while (c < n):
             found = 0
 
@@ -116,7 +115,11 @@ def main():
 
         if len(result):
             print(result)
-            i = result[0][1] + 1
+            i = result[0][1]
+            last_i = result.pop()
+            c = last_i[0]
+            r = last_i[1] + 1
+            board[last_i[1]][last_i[0]] = 0
         else:
             return
 
