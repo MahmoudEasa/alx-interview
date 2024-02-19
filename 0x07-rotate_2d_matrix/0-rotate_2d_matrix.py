@@ -11,13 +11,8 @@ def rotate_2d_matrix(matrix):
     i = m_len
     c = 0
     start = 0
-    while m_len > 1:
+    while m_len:
         while c < m_len:
-            # tmp = matrix[0][c]
-            # matrix[0][c] = matrix[c][m_len]
-            # matrix[c][m_len] = matrix[m_len][i]
-            # matrix[m_len][i] = matrix[i][0]
-            # matrix[i][0] = tmp
             tmp = matrix[start][i]
             matrix[start][i] = matrix[c][start]
             matrix[c][start] = matrix[m_len][c]
@@ -25,7 +20,7 @@ def rotate_2d_matrix(matrix):
             matrix[i][m_len] = tmp
             c += 1
             i -= 1
-        m_len = (m_len + 1) // 2
+        m_len -= 1
         start += 1
         c = start
         i = m_len
