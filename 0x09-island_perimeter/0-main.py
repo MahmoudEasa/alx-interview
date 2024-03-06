@@ -5,11 +5,26 @@
 island_perimeter = __import__('0-island_perimeter').island_perimeter
 
 if __name__ == "__main__":
-    grid = [
+        grid = [
         [0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0],
         [0, 1, 1, 1, 0, 0],
         [0, 0, 0, 0, 0, 0]
-    ]
-    print(island_perimeter(grid))
+        ]
+        print('12 => ')
+        print(island_perimeter(grid))
+
+        grid = [[0, 0, 0, 0, 0],
+                [0, 1, 1, 1, 0],
+                [0, 1, 0, 1, 0],
+                [0, 1, 1, 1, 0],
+                [0, 0, 0, 0, 0]]
+        print('16 => ')
+        print(island_perimeter(grid))
+
+        grid = [[0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0]]
+        print('0 => ')
+        print(island_perimeter(grid))
