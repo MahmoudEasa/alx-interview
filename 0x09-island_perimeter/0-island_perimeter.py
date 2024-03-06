@@ -3,6 +3,15 @@
 """
 
 
+def check_index(grid, row_len, col_len, row, col):
+    """ Check index and if grid[row][col] = 0 """
+    if row >= row_len or col >= col_len or \
+            row < 0 or col < 0 or grid[row][col] == 0:
+        return (1)
+    else:
+        return (0)
+
+
 def island_perimeter(grid):
     """ Returns the perimeter of the island described in grid """
     perimeter = 0
@@ -14,12 +23,12 @@ def island_perimeter(grid):
             for row in range(row_len):
                 for col in range(col_len):
                     if grid[row][col]:
-                        if row > 0 and not grid[row - 1][col]:
-                            perimeter += 1
-                        if row < (row_len - 1) and not grid[row + 1][col]:
-                            perimeter += 1
-                        if col > 0 and not grid[row][col - 1]:
-                            perimeter += 1
-                        if col < (col_len - 1) and not grid[row][col + 1]:
-                            perimeter += 1
+                        perimeter += check_index(grid, row_len,
+                                                 col_len, row - 1, col)
+                        perimeter += check_index(grid, row_len,
+                                                 col_len, row + 1, col)
+                        perimeter += check_index(grid, row_len,
+                                                 col_len, row, col - 1)
+                        perimeter += check_index(grid, row_len,
+                                                 col_len, row, col + 1)
     return (perimeter)

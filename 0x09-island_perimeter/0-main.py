@@ -28,3 +28,12 @@ if __name__ == "__main__":
                 [0, 0, 0]]
         print('0 => ')
         print(island_perimeter(grid))
+
+        grid = [
+        [1, 0, 0, 0],
+        [1, 1, 1, 0],
+        [1, 0, 1, 0],
+        [1, 0, 0, 1],
+        ]
+        print('18 => ')
+        print(island_perimeter(grid))
