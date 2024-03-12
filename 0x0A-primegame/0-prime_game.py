@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Prime Game """
 
+
 def SieveOfEratosthenes(n):
     """ Implementing the sieve algorithm in Python """
     prime = [True for i in range(n+1)]
