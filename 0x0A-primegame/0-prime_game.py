@@ -19,16 +19,11 @@ def SieveOfEratosthenes(n):
 
 
 def isWinner(x, nums):
-    """ Prime Game
-        where x is the number of rounds and nums is an array of n
-        Return: name of the player that won the most rounds
-        If the winner cannot be determined, return None
-        You can assume n and x will not be larger than 10000
-    """
+    """ Solve Prime Game """
 
     b_win, m_win = 0, 0
 
-    if not x or x > len(nums):
+    if not x:
         return (None)
 
     for i in range(x):
@@ -39,6 +34,8 @@ def isWinner(x, nums):
             m_win += 1
 
     if b_win > m_win:
-        return "Ben"
+        return ("Ben")
+    elif m_win > b_win:
+        return ("Maria")
     else:
-        return "Maria"
+        return (None)
