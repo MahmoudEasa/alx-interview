@@ -6,7 +6,7 @@ def SieveOfEratosthenes(n):
     """ Implementing the sieve algorithm in Python """
     prime = [True for i in range(n+1)]
     p = 2
-    result = []
+    result = 0
     while (p * p <= n):
         if (prime[p] is True):
             for i in range(p * p, n+1, p):
@@ -15,7 +15,7 @@ def SieveOfEratosthenes(n):
 
     for p in range(2, n+1):
         if prime[p]:
-            result.append(p)
+            result += 1
     return (result)
 
 
@@ -28,7 +28,7 @@ def isWinner(x, nums):
         return (None)
 
     for i in range(x):
-        primes = len(SieveOfEratosthenes(nums[i]))
+        primes = SieveOfEratosthenes(nums[i])
         if primes % 2 == 0:
             b_win += 1
         else:
